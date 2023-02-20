@@ -5,22 +5,24 @@
         <title>{% block title %}Accueil{% endblock %} - envolvoyage</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
+     
             {{ encore_entry_link_tags('app') }}
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
             integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-            <link rel="stylesheet" href="{{asset('assets/css/styles.css')}}">
+        
+            
+		<!-- Feuilles de styles -->
+		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css.map') }}">
+        {% block stylesheets %}{% endblock %}
+	
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
-        {% endblock %}
-
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-            <script src="{{asset('assets/js/scripts.js')}}"></script> 
-            <script src="{{asset('assets/js/bootstrap.bundle.js')}}"></script> 
-            <script defer src="{{asset('assets/js/bootstrap.bundle.min.js')}}"></script>
-            <script defer src="{{asset('assets/js/bootstrap.bundle.min.js.map')}}"></script> 
-        {% endblock %}
-    </head>
+		<!-- Fichiers JS -->
+		<script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" defer></script>
+        <script src="{{ asset('assets/js/bootstrap.bundle.js.map') }}" defer></script>
+		{% block javascripts %}{% endblock %}
+		
     <body>
         {% block header %}
         {% include 'include/_header.html.twig' %}
