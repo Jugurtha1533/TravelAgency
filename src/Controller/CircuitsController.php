@@ -17,7 +17,7 @@ class CircuitsController extends AbstractController
     }
 
     #[Route('/{slug}', name: 'details')]
-    public function details(Circuits $product): Response
+    public function details(Circuits $circuits): Response
     {
         return $this->render('circuits/details.html.twig', compact('circuit'));
     }

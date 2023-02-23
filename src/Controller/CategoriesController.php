@@ -18,7 +18,7 @@ class CategoriesController extends AbstractController
         //On va chercher le numéro de page dans l'url
         $page = $request->query->getInt('page', 1);
 
-        //On va chercher la liste des circuits de la catégorie
+        //On va chercher la liste des c de la catégorie
         $circuits = $circuitsRepository->findCircuitsPaginated($page, $category->getSlug(), 4);
 
         return $this->render('categories/list.html.twig', compact('category', 'circuits'));
