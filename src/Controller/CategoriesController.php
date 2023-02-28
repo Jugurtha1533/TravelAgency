@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Categories;
 use App\Repository\CircuitsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,6 +21,8 @@ class CategoriesController extends AbstractController
 
         //On va chercher la liste des c de la catégorie
         $circuits = $circuitsRepository->findCircuitsPaginated($page, $category->getSlug(), 4);
+
+        $a = new ArrayCollection();
 
         return $this->render('categories/list.html.twig', compact('category', 'circuits'));
         // Syntaxe alternative

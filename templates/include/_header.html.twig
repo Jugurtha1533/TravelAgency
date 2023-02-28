@@ -25,6 +25,11 @@
 		</ul>
 		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 			{% if app.user %}
+			{% if 'ROLE_ADMIN' in  app.user.roles %}
+        	 <li>
+            	<a class="connecte" href="{{path('admin_circuits_index')}}">Administration</a>
+            </li>
+            {% endif %}
 				<li class="nav-item">
 					<a class="nav-link" href="#">Mon compte</a>
 				</li>

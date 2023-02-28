@@ -1,0 +1,23 @@
+{{ form_start(circuitsForm) }}
+{{ form_row(circuitsForm.name) }}
+{{ form_row(circuitsForm.description) }}
+{{ form_row(circuitsForm.categories) }}
+{{ form_row(circuitsForm.price) }}
+{{ form_row(circuitsForm.stock) }}
+
+{# On affiche les images si on est en édition #}
+{% if app.request.attributes.get('_route') == 'admin_circuits_edit' %}
+	<h2>Images</h2>
+	{% for image in circuits.images %}
+		<div>
+			<img src="{{ asset('assets/uploads/circuits/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+			<a href="{{ path('admin_circuits_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}">Supprimer</a>
+		</div>
+	{% endfor %}
+{% endif %}
+
+{{ form_row(circuitsForm.images) }}
+
+
+<button type="submit" class="btn btn-warning btn-lg btn-block my-3">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(circuitsForm) }}

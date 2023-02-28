@@ -90,7 +90,7 @@
       </div>
       <div class="col-md-5">
         <div class="ratio ratio-16x9">
-          <iframe src="https://www.youtube.com/watch?v=-kDO3k4FElY" title="Road trip dans le Sud Tyrol en Italie" allowfullscreen></iframe>
+          <iframe src="{{asset('assets/images/kovaleva.mp4')}}" title="Road trip dans le Sud Tyrol en Italie" allowfullscreen></iframe>
         </div>
       </div>
       <hr class="featurette-divider">
@@ -124,8 +124,8 @@
       <main class="container">
         <section class="row">
             <div class="col-12">
-                <h1>Nos Packages</h1>
-                <p>Bienvenue dans notre agence</p>            
+                <h1 class="text-center">Nos Packages</h1>
+                          
             </div>
             {% for category in categories %}
                 {% if category.parent == null %}
@@ -133,7 +133,7 @@
                         <h2>{{ category.name }}</h2>
                     </div>
                 {% else %}
-                    <div class="col-4">
+                    <div class="col-3 mb-4">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h3 class="card-title">{{ category.name }}</h3>

@@ -19,10 +19,10 @@
                     </div>
                     <div class="carousel-inner">
                         {% for image in circuit.images %}
-                            {% comment %} <div class="carousel-item {{ (loop.first ) ? 'active' : '' }}">
-                                <img src="{{ asset('assets/uploads/circuits/mini/300x300-') ~ image.name }}" class="d-block w-100" alt="{{ circuit.name }}">
-                            </div> {% endcomment %}
-                        {% endfor %}
+                        <div class="carousel-item {{ (loop.first ) ? 'active' : '' }}">
+                            <img src="{{ asset('assets/uploads/circuits/mini/300x300-') ~ image.name }}" class="d-block w-100" alt="{{ circuit.name }}">
+                        </div>
+                    {% endfor %}
                     </div>
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

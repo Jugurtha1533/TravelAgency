@@ -1,0 +1,61 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Administration des circuits
+{% endblock %}
+
+{% block body %}
+
+	<a class="btn btn-info" href="{{path('admin_circuits_index')}}">Administrer les circuits</a>
+	
+	<h1 class="text-center">Administrer les produits</h1>
+	<a href="{{path('admin_circuits_add')}}" class="btn btn-success ">Ajt</a>
+
+	<fieldset class="container">
+		<table class="table">
+
+			<thead>
+				<tr>
+					<td>Id</td>
+					<td>Nom de circuit</td>
+					<td>Prix</td>
+					<td>Image1</td>
+					<td>Actions</td>
+				</tr>
+
+			</thead>
+
+			<tbody>
+
+				{% for circuit in circuits %}
+
+					<tr>
+						<td>
+							{{circuit.id}}
+						</td>
+						<td>
+							{{circuit.name}}
+						</td>
+						<td>
+							{{circuit.price}}
+						</td>
+						<td></td>
+						<td>
+
+							<a href="{{path('admin_circuits_edit',{id:circuit.id})}}" class="btn btn-primary ">Mdf</a>
+							<a href="{{path('admin_circuits_delete',{id:circuit.id})}}" class="btn btn-danger ">Sup</a>
+
+						</td>
+					</tr>
+				{% endfor %}
+
+			</tbody>
+		</table>
+	</fieldset>
+
+
+	<style>
+		.fieldset {
+			border-radius: 10px;
+		}
+	</style>
+{% endblock %}

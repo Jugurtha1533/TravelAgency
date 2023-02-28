@@ -33,14 +33,14 @@ class Circuits
     #[ORM\Column]
     private ?int $stock = null;
 
-    #[ORM\ManyToOne(inversedBy: 'Circuits')]
+    #[ORM\ManyToOne(inversedBy: 'circuits')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Categories $categories = null;
 
-    #[ORM\OneToMany(mappedBy: 'Circuits', targetEntity: Images::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'circuits', targetEntity: Images::class, orphanRemoval: true,cascade:['persist'])]
     private Collection $images;
 
-    #[ORM\OneToMany(mappedBy: 'Circuits', targetEntity: ReservationsDetails::class)]
+    #[ORM\OneToMany(mappedBy: 'circuits', targetEntity: ReservationsDetails::class)]
     private Collection $reservationsDetails;
 
     public function __construct()

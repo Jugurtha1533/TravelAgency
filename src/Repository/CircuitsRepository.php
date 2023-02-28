@@ -70,12 +70,10 @@ class CircuitsRepository extends ServiceEntityRepository
         $result['pages'] = $pages;
         $result['page'] = $page;
         $result['limit'] = $limit;
-
+        
         return $result;
     }
-//    /**
-//     * @return Circuits[] Returns an array of Circuits objects
-//     */
+  
 //    public function findByExampleField($value): array
 //    {
 //        return $this->createQueryBuilder('t')

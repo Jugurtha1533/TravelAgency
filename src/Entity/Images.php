@@ -18,7 +18,7 @@ class Images
 
     #[ORM\ManyToOne(inversedBy: 'images')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?circuits $circuits = null;
+    private ?Circuits $circuits = null;
 
     public function getId(): ?int
     {
@@ -37,12 +37,12 @@ class Images
         return $this;
     }
 
-    public function getcircuits(): ?circuits
+    public function getCircuits(): ?Circuits
     {
         return $this->circuits;
     }
 
-    public function setcircuits(?circuits $circuits): self
+    public function setCircuits(?Circuits $circuits): self
     {
         $this->circuits = $circuits;
 
