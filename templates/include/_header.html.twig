@@ -20,7 +20,7 @@
 			<a class="nav-link" href="">Circuits</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Contact</a>
+			<a class="nav-link " href="{{path("contact_index")}}" tabindex="-1" aria-disabled="true">Contact</a>
 		  </li>
 		</ul>
 		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
@@ -44,6 +44,9 @@
 					<a class="nav-link" href="{{ path('app_login') }}">Me Connecter</a>
 				</li>
 			{% endif %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{path('cart_index')}}">Panier</a>
+			</li>
 		</ul>
 	  </div>
 	</div>

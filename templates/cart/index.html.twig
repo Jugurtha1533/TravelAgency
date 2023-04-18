@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Votre panier{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <section class="bg-light p-3 text-center py-5">
+            <h1 text-center" style="color:#ff8c00;">Votre panier</h1>
+        </section>
+
+        <table class="table table-striped table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Circuit</th>
+                    <th>Prix</th>
+                    <th>Quantité</th>
+                    <th>Total</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {{dump(dataPanier)}}
+                {% for element in dataPanier %}
+                    <tr>
+                        <td>{{ element.circuit.name }}</td>
+                        <td class="text-start">{{ element.circuit.price }} €</td>
+                        <td class="text-center">{{ element.quantite }}</td>
+                        <td class="text-start">{{ element.quantite * element.circuit.price }} €</td>
+                        <td>
+                            <a href="{{path("cart_add", {id: element.circuit.id})}}" class="btn btn-outline-success ">
+                                <i class="bi bi-cart-plus"></i>
+                            </a>
+                            <a href="{{path("cart_remove", {id: element.circuit.id})}}" class="btn btn-outline-warning ">
+                                <i class="bi bi-cart-dash"></i>
+                            </a>
+                            <a href="{{path("cart_delete", {id: element.circuit.id})}}" style="background-color: #ff8c00;color:#FFFFFF" class="btn  ">
+                                <i class="bi bi-cart-x"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5" class="text-center">Votre panier est vide</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3">Total</td>
+                    <td class="text-end">{{ total }} €</td>
+                    <td>
+
+                        {% set url_delete_all = "javascript: void(0)"  %}
+                        {% set url_validate_cart = "javascript: void(0)"  %}
+
+                        {% if dataPanier is not empty %}
+                            {% set url_delete_all = path("cart_delete_all")  %}
+                            {% set url_validate_cart = path("cart_delete_all")  %}
+
+                            <a href="{{url_delete_all}}" class="btn btn-outline-danger btn-sm">
+                                <i class="bi bi-cart-x"></i>
+                                Supprimer le panier
+                            </a>
+                            
+                            <a href="{{url_validate_cart}}" class="btn btn-primary btn-sm">
+                                Valider le panier
+                            </a>
+                        {% endif %}
+                        
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>    
+{% endblock %}

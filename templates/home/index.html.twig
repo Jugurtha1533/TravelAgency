@@ -48,41 +48,38 @@
         <img src="{{asset('assets/images/steps-icon-1 .png')}}" alt="" class="bd-placeholder-img rounded-circle" widt height="140"
           xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid sl
                   focusable=" false" role="img" aria-label="Placeholder: 140x140">
-        <h2>Planifier</h2>
+        <h2 style="color:#ff8c00;">Planifier</h2>
         <p>Confiez-nous vos rêves d'évasion : en famille ou
           entre amis, nous trouverons la formule qui
           comblera vos attentes.</p>
-        <p><a class="btn btn-secondary" href="#">View details &
-            raquo;</a></p>
+        <p><a style="background-color: #ff8c00;color:#FFFFFF"class="btn text-center" href="#">View details</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <img src="{{asset('assets/images/steps-icon-2 .png')}}" alt="" class="bd-placeholder-img rounded-circle" width="140"
           height="140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
           role="img" aria-label="Placeholder: 140x140">
-        <h2>Organiser</h2>
+        <h2 style="color:#ff8c00;">Organiser</h2>
         <p>Nous nous chargeons d'assurer votre sécurité et de
           veiller à votre pleine sérénité tout au long
           de votre voyage.</p>
-        <p><a class="btn btn-secondary" href="#">View details &
-            raquo;</a></p>
+        <p><a style="background-color: #ff8c00;color:#FFFFFF" class="btn text-center" href="#">View details</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
         <img src="{{asset('assets/images/steps-icon-3 .png')}}" alt="" class="bd-placeholder-img rounded-circle" width height="140"
           xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid sl
                   focusable=" false" role="img" aria-label="Placeholder: 140x140">
-        <h2>Voyager</h2>
+        <h2 style="color:#ff8c00;">Voyager</h2>
         <p>Nous nous chargeons d'assurer votre sécurité et de
           veiller à votre pleine sérénité tout au long
           de votre voyage.</p>
-        <p><a class="btn btn-secondary" href="#">View details &
-            raquo;</a></p>
+        <p><a  style="background-color: #ff8c00;color:#FFFFFF" class="btn text-center" href="#">View details</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
     <!-- START THE FEATURETTES -->
     <hr class="featurette-divider">
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">Meilleures destinations.
+        <h2 class="featurette-heading"style="color: #ff8c00;">Meilleures destinations.
           <span class="text-mut blow your mind"></span>
         </h2>
         <p class=" lead">Trouver la perfection de voyage avec
@@ -96,7 +93,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <div class="col-md-7 order-md-2">
-          <h2 class="featurette-heading">Profiter en
+          <h2 class="featurette-heading"style="color: #ff8c00;">Profiter en
             famille<span class="text-mute
                yourself"></span></h2>
           <p class=" lead">Offrez le meilleur à ceux que vous
@@ -109,7 +106,7 @@
       <hr class="featurette-divider">
       <div class="row featurette">
         <div class="col-md-7">
-          <h2 class="featurette-heading"> Envie s'evader<span class="text-muted">
+          <h2 class="featurette-heading"style="color: #ff8c00;" > Envie s'evader<span class="text-muted">
             </span></h2>
           <p class="lead">Parfois un peu d'évasion serait le
             bienvenue et ferait le plus grand bien !</p>
@@ -121,23 +118,23 @@
       <hr class="featurette-divider">
       <!-- /END THE FEATURETTES -->
 
-      <main class="container">
+      <main class="container bg-image" style=" background-image: url('{{ asset('assets/images/world.jpg') }}'); background-repeat: no-repeat;" width="100%" height="100%" alt="">
         <section class="row">
             <div class="col-12">
-                <h1 class="text-center">Nos Packages</h1>
+                <h1 class="text-center" style="color:#ff8c00;">Nos Packages</h1>
                           
             </div>
             {% for category in categories %}
                 {% if category.parent == null %}
                     <div class="col-12">
-                        <h2>{{ category.name }}</h2>
+                        <h2 style="color: #ffffff80;" class="text-center  py-3">{{ category.name }}</h2>
                     </div>
                 {% else %}
                     <div class="col-3 mb-4">
-                        <div class="card h-100">
+                        <div class="card h-100" style="background-color:#ffa50033;">
                             <div class="card-body">
-                                <h3 class="card-title">{{ category.name }}</h3>
-                                <a href="{{ path('categories_list', {slug: category.slug}) }}" class="btn btn-outline-warning">Voir plus de détails </a>
+                                <h3 class="card-title text-center" style="color: #4d6de6;">{{ category.name }}</h3>
+                                <a href="{{ path('categories_list', {slug: category.slug}) }}" style="background-color: #ff8c00;color:#FFFFFF" class="btn btn-outline-warning d-flex justify-content-center">Voir plus de détails </a>
                             </div>
                         </div>
                     </div>    

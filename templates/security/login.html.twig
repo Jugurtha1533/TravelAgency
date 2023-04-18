@@ -3,7 +3,7 @@
 {% block title %}Connexion{% endblock %}
 
 {% block body %}
-<section class="container my-3">
+<section class="container my-5 mt-5>
     <div class="row">
         <div class="col">
             <form method="post">
@@ -17,7 +17,7 @@
                     </div>
                 {% endif %}
 
-                <h1 class="h3 mb-3 font-weight-normal">Me connecter</h1>
+                <h1 class="h3 mb-3 font-weight-normal my-2">Me connecter</h1>
                 <label for="inputEmail">Email</label>
                 <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
                 <label for="inputPassword">Mot de passe</label>
@@ -38,10 +38,10 @@
                     </div>
                 #}
 
-                <button class="btn btn-warning btn-lg btn-block my-3 mt-3" type="submit">
+                <button style="background-color: #ff8c00;color:#FFFFFF" class="btn btn-lg btn-block my-2 mt-3" type="submit">
                     Me connecter
                 </button>
-                <a href="{{ path('app_register') }}" class="btn btn-secondary mt-3">M'inscrire</a>
+                <a href="{{ path('app_register') }}" style="background-color: #4d6de6;color:#FFFFFF" class="btn mt-3">M'inscrire</a>
                 
             </form>
         

@@ -4,10 +4,10 @@
 
 {% block body %}
 
-    <main class="container">
+    <main class="container py-4">
         <section class="row">
             <div class="col-12">
-                <h1>Nos circuits en {{ category.name }}</h1>
+                <h1 style="color:#ff8c00;">Nos circuits en {{ category.name }}</h1>
             </div>
             
             {% for circuit in circuits.data %}
@@ -18,10 +18,10 @@
                             <img src="{{ asset('assets/uploads/circuits/mini/300x300-' ~ image.name) }}" class="card-img-top" alt="{{ circuit.name }}">
                         {% endfor%}
                                        
-                        <div class="card-body">
-                            <h2 class="card-title">{{ circuit.name }}</h2>
+                        <div class="card-body" style="background-color:#ffa50033;">
+                            <h2 class="card-title text-center"style="color: #4d6de6;">{{ circuit.name }}</h2>
                             <p class="card-text">{{ circuit.description }}</p>
-                            <a href="{{ path('circuits_details', {"slug": circuit.slug }) }}" class="btn btn-warning btn-lg btn-block my-3">Voir les détails</a>
+                            <a href="{{path("cart_add", {id: circuit.id})}}" style="background-color: #ff8c00;color:#FFFFFF" class="btn btn-warning btn-lg btn-block my-3 d-flex justify-content-center">Ajouter au Panier</a>
                         </div>
                     </article>
 

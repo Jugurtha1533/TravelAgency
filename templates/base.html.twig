@@ -14,18 +14,18 @@
 		<!-- Feuilles de styles -->
         {% block stylesheets %}
 		<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css.map') }}">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+        
         {% endblock %}
 	
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
 		<!-- Fichiers JS -->
         {% block javascripts %}
+        
 		<script src="{{ asset('assets/js/bootstrap.bundle.js') }}" defer></script>
         <script src="{{ asset('assets/js/bootstrap.bundle.js.map') }}" defer></script>
-        <script>
-            $(document).ready(function(){ $('.carousel').carousel(); });
-        </script>
+        
 		{% endblock %}
 		
     <body>
@@ -42,5 +42,10 @@
         {% block footer %}
         {% include 'include/_footer.html.twig' %}
         {% endblock %}
+
+        <script src="{{ asset('assets/js/jquery.js') }}" defer></script>
+        <script>
+            $(document).ready(function(){ $('.carousel').carousel(); });
+        </script>
     </body>
 </html>
