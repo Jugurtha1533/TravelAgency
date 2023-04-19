@@ -278,3 +278,40 @@ ol {
     line-height: 1.7;
 }
 
+/* #packages {
+
+    background-image: url('../images/world.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+} */
+
+.div-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .img-bg {
+    opacity: 0.6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: auto;
+  }
+  
+  .div-content {
+    position: relative;
+  }
+
+  .package {
+
+    position: relative;
+  }
+
+  .details {
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+  }
