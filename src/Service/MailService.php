@@ -22,7 +22,7 @@ class MailService
         string $subject,
         string $htmlTemplate,
         array $context,
-        string $to = 'jugurthaakli@gmail.com'
+        string $to = 'fahimlaidi@gmail.com'
     ): void {
 
         // var_dump($context);
@@ -31,8 +31,8 @@ class MailService
         // var_dump($to);
         // die;
         $email = (new TemplatedEmail())
-            ->from($from)
-            ->to($to)
+            ->from('jugurthaakli@gmail.com')
+            ->to('fahimlaidi@gmail.com')
             ->subject($subject)
             ->htmlTemplate($htmlTemplate)
             ->context($context);
