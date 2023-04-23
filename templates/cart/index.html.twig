@@ -3,6 +3,9 @@
 {% block title %}Votre panier{% endblock %}
 
 {% block body %}
+
+{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+{% endif %}
     <div class="container">
         <section class="bg-light p-3 text-center py-5">
             <h1 text-center" style="color:#ff8c00;">Votre panier</h1>
@@ -19,8 +22,6 @@
                 </tr>
             </thead>
             <tbody>
-
-                {{dump(dataPanier)}}
                 {% for element in dataPanier %}
                     <tr>
                         <td>{{ element.circuit.name }}</td>
@@ -63,7 +64,7 @@
                                 Supprimer le panier
                             </a>
                             
-                            <a href="{{url_validate_cart}}" class="btn btn-primary btn-sm">
+                            <a href="{{path('app_payment')}}" class="btn btn-primary btn-sm">
                                 Valider le panier
                             </a>
                         {% endif %}

@@ -1,5 +1,10 @@
-
+{% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
 <nav class=" navbar navbar-expand-lg navbar-dark bg-primary">
+	
 	<div class="container-fluid">
 	  <a class="navbar-brand" href="{{ path('app_home') }}"><span>EnvolVoyage</ span><img src="{{asset('assets/images/logo-envole voyage.png')}}"
 			width="50"></a>
@@ -14,19 +19,31 @@
 			<a class="nav-link " aria-current="page" href="{{ path('app_home') }}">Accueil</a>
 		  </li>
 		  <li class="nav-item">
-			<a class="nav-link" href="#packages">Distinations</a>
+			<a class="nav-link" href="#packages">Destinations</a>
 		  </li>
 		  <li class="nav-item">
 			<a class="nav-link " href="{{path("contact_index")}}" tabindex="-1" aria-disabled="true">Contact</a>
 		  </li>
 		</ul>
-		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+		<ul class="navbar-nav ms-auto mb-2 mb-lg-0">			
 			{% if app.user %}
-			{% if 'ROLE_ADMIN' in  app.user.roles %}
-        	 <li>
-            	<a class="connecte" href="{{path('admin_circuits_index')}}">Administration</a>
-            </li>
-            {% endif %}
+				{% if 'ROLE_ADMIN' in  app.user.roles %}
+					<div class="dropdown">
+						<a class="nav-link" href="#" role="button" id="dropdownAdmin" data-bs-toggle="dropdown" aria-expanded="false">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down" viewBox="0 0 16 16">
+								<path d="M3.204 5h9.592L8 10.481 3.204 5zm-.753.659 4.796 5.48a1 1 0 0 0 1.506 0l4.796-5.48c.566-.647.106-1.659-.753-1.659H3.204a1 1 0 0 0-.753 1.659z"/>
+							  </svg>
+							  Administration
+						  </a>
+						<ul class="dropdown-menu" aria-labelledby="dropdownAdmin">
+						  <li><a class="dropdown-item" href="{{path('admin_circuits_index')}}">Administrer les circuits</a>
+						  <li><a class="dropdown-item" href="#">Another action</a></li>
+						  <li><a class="dropdown-item" href="#">Something else here</a></li>
+						</ul>
+					  </div>
+
+
+				{% endif %}
 				<li class="nav-item">
 					<a class="nav-link" href="#">Mon compte</a>
 				</li>
@@ -38,11 +55,18 @@
 					<a class="nav-link" href="{{ path('app_register') }}">M'inscrire</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_login') }}">Me Connecter</a>
+					<a class="nav-link" href="{{ path('app_login') }}">Me connecter</a>
 				</li>
 			{% endif %}
 			<li class="nav-item">
-				<a class="nav-link" href="{{path('cart_index')}}">Panier</a>
+
+				{% set cartSize = app.session.get('cartSize') %}
+				<a class="nav-link" href="{{path('cart_index')}}">Panier 
+					{%if cartSize is not null and cartSize != 0%}
+						<span>{{cartSize}}</span>
+					{%endif%}
+				</a>
+				
 			</li>
 		</ul>
 	  </div>

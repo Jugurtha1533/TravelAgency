@@ -5,7 +5,6 @@
 
 {% block body %}
 	<div class="container py-3">
-		<a class="btn btn-info" href="{{path('admin_circuits_index')}}">Administrer les circuits</a>
 		
 		<h1 style="color: #4d6de6"; class="text-center font-weight-bold py-3"">Administrer les circuits</h1>
 		<a href="{{path('admin_circuits_add')}}" style="background-color: #03989C;color:#FFFFFF" class="btn">Ajouter</a>
@@ -18,7 +17,7 @@
 						<td>Id</td>
 						<td>Nom de circuit</td>
 						<td>Prix</td>
-						<td>Image1</td>
+						<td>Images</td>
 						<td>Actions</td>
 					</tr>
 
@@ -38,7 +37,13 @@
 							<td>
 								{{circuit.price}}€
 							</td>
-							<td></td>
+							<td>
+								{% for image in circuit.images %}
+									<div>
+										<img src="{{ asset('assets/uploads/circuits/mini/300x300-' ~ image.name ) }}" alt="Image" width="150">
+									</div>
+								{% endfor %}
+							</td>
 							<td>
 
 								<a href="{{path('admin_circuits_edit',{id:circuit.id})}}" style="background-color: #4d6de6;color:#FFFFFF" class="btn">Mdf</a>

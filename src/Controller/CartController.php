@@ -29,6 +29,7 @@ class CartController extends AbstractController
            
             $total += $circuits->getPrice() * $quantite/100;
         }
+        
 
         return $this->render('cart/index.html.twig', compact("dataPanier", "total"));
        
@@ -42,27 +43,39 @@ class CartController extends AbstractController
             // On récupère le panier actuel
             $panier = $session->get("panier", []);
             $id = $circuits->getId();
-        
-
             if(!empty($panier[$id])){
                 $panier[$id]++;
             
         
             }else{
-                $panier[$id] =1;
+                $panier[$id] = 1;
             }
 
             // On sauvegarde dans la session
             $session->set("panier", $panier);
+
+            $cartSize = $this->getCartSize($session);
+            $session->set("cartSize", $cartSize);
         
             return $this->redirectToRoute("cart_index");
 
         } catch (\Exception $e) {
             echo $e->getMessage();
             die;
-
         }
         
+    }
+
+    private function getCartSize(SessionInterface $session)
+    {
+        $panier = $session->get("panier", []);
+        $total = 0;
+
+        foreach($panier as $quantite){
+           
+            $total += $quantite;
+        }
+        return $total;
     }
 
     /**
@@ -84,6 +97,10 @@ class CartController extends AbstractController
 
         // On sauvegarde dans la session
         $session->set("panier", $panier);
+        $cartSize = $this->getCartSize($session);
+
+        $session->set("cartSize", $cartSize);
+        
 
         return $this->redirectToRoute("cart_index");
     }
@@ -103,6 +120,8 @@ class CartController extends AbstractController
 
         // On sauvegarde dans la session
         $session->set("panier", $panier);
+        $cartSize = $this->getCartSize($session);
+        $session->set("cartSize", $cartSize);
 
         return $this->redirectToRoute("cart_index");
     }
@@ -113,7 +132,7 @@ class CartController extends AbstractController
     public function deleteAll(SessionInterface $session)
     {
         $session->remove("panier");
-
+        $session->remove("cartSize");
         return $this->redirectToRoute("cart_index");
     }
 

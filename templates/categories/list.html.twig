@@ -21,6 +21,7 @@
                         <div class="card-body" style="background-color:#ffa50033;">
                             <h2 class="card-title text-center"style="color: #4d6de6;">{{ circuit.name }}</h2>
                             <p class="card-text">{{ circuit.description }}</p>
+                            <p class="text-center fw-bolder"> Prix : {{ circuit.price }} €</<p>
                             <a href="{{path("cart_add", {id: circuit.id})}}" style="background-color: #ff8c00;color:#FFFFFF" class="btn btn-warning btn-lg btn-block my-3 d-flex justify-content-center">Ajouter au Panier</a>
                         </div>
                     </article>

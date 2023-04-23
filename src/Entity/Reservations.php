@@ -21,15 +21,15 @@ class Reservations
     #[ORM\Column(type: 'string', length: 20, unique: true)]
     private $reference;
 
-    #[ORM\ManyToOne(targetEntity: Coupons::class, inversedBy: 'Reservations')]
-    private $coupons;
-
-    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'Reservations')]
+    #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'reservations')]
     #[ORM\JoinColumn(nullable: false)]
     private $users;
 
-    #[ORM\OneToMany(mappedBy: 'Reservations', targetEntity: ReservationsDetails::class, orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'Reservations', targetEntity: ReservationsDetails::class, orphanRemoval: true, cascade: ["persist"])]
     private $ReservationsDetails;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $total = null;
 
     public function __construct()
     {
@@ -104,6 +104,18 @@ class Reservations
                 $ReservationsDetail->setReservations(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTotal(): ?float
+    {
+        return $this->total;
+    }
+
+    public function setTotal(?float $total): self
+    {
+        $this->total = $total;
 
         return $this;
     }
